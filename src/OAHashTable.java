@@ -1,23 +1,30 @@
+import com.sun.org.apache.xpath.internal.operations.Mod;
 
 public abstract class OAHashTable implements IHashTable {
 	
 	private HashTableElement [] table;
-	
+	private ModHash modhash;
+	private final HashTableElement
+
 	public OAHashTable(int m) {
 		this.table = new HashTableElement[m];
-		// TODO add to constructor as needed
+		this.modhash = ModHash.GetFunc(m, 1000000007);
 	}
 	
 	
 	@Override
 	public HashTableElement Find(long key) {
-		// TODO implement find
+		for (int i = 0; i < table.length; i++) {
+			if (table[Hash(key, i)].GetKey() == key) return table[Hash(key, i)];
+		}
 		return null;
 	}
 	
 	@Override
 	public void Insert(HashTableElement hte) throws TableIsFullException,KeyAlreadyExistsException {
-		// TODO implement insertion	
+		for (int i = 0; i < table.length; i++) {
+			if (table[Hash(key, i)].GetKey() == key) return table[Hash(key, i)];
+		}
 	}
 	
 	@Override
