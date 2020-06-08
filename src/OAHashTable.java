@@ -2,9 +2,9 @@
 public abstract class OAHashTable implements IHashTable {
 	
 	private HashTableElement [] table;
-	
 	public OAHashTable(int m) {
 		this.table = new HashTableElement[m];
+
 		// TODO add to constructor as needed
 	}
 	
