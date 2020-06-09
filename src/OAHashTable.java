@@ -3,8 +3,8 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 public abstract class OAHashTable implements IHashTable {
 	
 	private HashTableElement [] table;
-	private ModHash modhash;
-	private final HashTableElement
+	protected ModHash modhash;
+	private final HashTableElement;
 
 	public OAHashTable(int m) {
 		this.table = new HashTableElement[m];
