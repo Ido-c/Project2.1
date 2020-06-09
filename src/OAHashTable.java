@@ -25,7 +25,7 @@ public abstract class OAHashTable implements IHashTable {
         for (int i = 0; i < table.length; i++) {
             if (table[Hash(hte.GetKey(), i)] == null || table[Hash(hte.GetKey(), i)] == hteDeleted) {
                 table[Hash(hte.GetKey(), i)] = hte;
-                break;
+                return;
             } else if (table[Hash(hte.GetKey(), i)].GetKey() == hte.GetKey()) {
                 throw new KeyAlreadyExistsException(hte);
             }
