@@ -16,12 +16,14 @@ public class RandomShit {
         System.out.println(list.size()+" l vs s "+set.size());
         System.out.println(set.getClass().getCanonicalName());
         System.out.println(list.toString());
-
+        int SumErr1=0;
+        int SumErr2=0;
         for (int i = 0; i <100 ; i++) {
             int err1=0;
             int err2=0;
+
             Random random = new Random();
-            AQPHashTable hashTable =new  AQPHashTable(6571, 1000000007);
+            QPHashTable hashTable =new  QPHashTable(6571, 1000000007);
             for (int j = 0; j <6571 ; j++) {
                 int b= random.nextInt(100);
                 int a = 100*j+b;
@@ -29,12 +31,15 @@ public class RandomShit {
                     hashTable.Insert(new HashTableElement(a,0));
                 } catch (IHashTable.TableIsFullException e) {
                     err1++;
+                    SumErr1++;
                 } catch (IHashTable.KeyAlreadyExistsException e) {
                     err2++;
+                    SumErr2++;
                 }
             }
             System.out.println("TableIsFullException "+err1+" KeyAlreadyExistsException "+err2);
         }
+        System.out.println("overoll TableIsFullException "+SumErr1+" KeyAlreadyExistsException "+SumErr2);
         }
     }
     class MySupp implements Supplier<Integer> {
