@@ -6,7 +6,6 @@ public class AQPHashTable extends OAHashTable {
 		super(m);
 		// TODO Complete hash table constructor.
 	}
-	
 	@Override
 	public int Hash(long x, int i) {
 		// TODO implement hash function
