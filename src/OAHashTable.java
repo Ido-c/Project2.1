@@ -15,7 +15,14 @@ public abstract class OAHashTable implements IHashTable {
     @Override
     public HashTableElement Find(long key) {
         for (int i = 0; i < table.length; i++) {
-            if (table[Hash(key, i)].GetKey() == key) return table[Hash(key, i)];
+            int hashed = Hash(key, i);
+            if (table[hashed] == null) {
+                return null;
+            } else if (table[hashed] == hteDeleted) {
+                continue;
+            } else if (table[hashed].GetKey() == key) {
+                return table[hashed];
+            }
         }
         return null;
     }
@@ -23,10 +30,11 @@ public abstract class OAHashTable implements IHashTable {
     @Override
     public void Insert(HashTableElement hte) throws TableIsFullException, KeyAlreadyExistsException {
         for (int i = 0; i < table.length; i++) {
-            if (table[Hash(hte.GetKey(), i)] == null || table[Hash(hte.GetKey(), i)] == hteDeleted) {
-                table[Hash(hte.GetKey(), i)] = hte;
+            int hashed = Hash(hte.GetKey(), i);
+            if (table[hashed] == null || table[hashed] == hteDeleted) {
+                table[hashed] = hte;
                 return;
-            } else if (table[Hash(hte.GetKey(), i)].GetKey() == hte.GetKey()) {
+            } else if (table[hashed].GetKey() == hte.GetKey()) {
                 throw new KeyAlreadyExistsException(hte);
             }
         }
@@ -36,8 +44,13 @@ public abstract class OAHashTable implements IHashTable {
     @Override
     public void Delete(long key) throws KeyDoesntExistException {
         for (int i = 0; i < table.length; i++) {
-            if (table[Hash(key, i)].GetKey() == key) {
-                table[Hash(key, i)] = hteDeleted;
+            int hashed = Hash(key, i);
+            if (table[hashed] == null) {
+                throw new KeyDoesntExistException(key);
+            } else if (table[hashed] == hteDeleted) {
+                continue;
+            } else if (table[hashed].GetKey() == key) {
+                table[hashed] = hteDeleted;
                 return;
             }
         }
