@@ -37,7 +37,7 @@ public class DeleteTester {
                 long time2 = System.nanoTime();
                 totalTime += time2 - time1;
             }
-            System.out.println("Iteration " + i + ": " + totalTime);
+            System.out.println("Iteration " + i + ": " + totalTime/1000000000);
         }
     }
 }
