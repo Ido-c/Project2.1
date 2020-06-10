@@ -10,33 +10,33 @@ public class Tester {
         AQPHashTable aqpHashTable =new  AQPHashTable(10000019, 1000000007);
         DoubleHashTable doubleHashTable =new  DoubleHashTable(10000019, 1000000007);
         long time1 = System.nanoTime();
-        for (int j = 0; j < 5000009; j++) {
+        for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
             lpHashTable.Insert(new HashTableElement(a, 0));
         }
-        long time2 = System.nanoTime();
+        /*long time2 = System.nanoTime();
         for (int j = 0; j < 5000009; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
             qpHashTable.Insert(new HashTableElement(a, 0));
-        }
+        }*/
         long time3 = System.nanoTime();
-        for (int j = 0; j < 5000009; j++) {
+        for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
             aqpHashTable.Insert(new HashTableElement(a, 0));
         }
         long time4 = System.nanoTime();
-        for (int j = 0; j < 5000009; j++) {
+        for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
             doubleHashTable.Insert(new HashTableElement(a, 0));
         }
         long time5 = System.nanoTime();
         System.out.println("Initialize: " + (time1 - time0));
-        System.out.println("LP time: " + (time2 - time1));
-        System.out.println("QP time: " + (time3 - time2));
+        System.out.println("LP time: " + (time3 - time1));
+//        System.out.println("QP time: " + (time3 - time2));
         System.out.println("AQP time: " + (time4 - time3));
         System.out.println("Double time: " + (time5 - time4));
     }
