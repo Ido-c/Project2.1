@@ -9,6 +9,20 @@ public class Tester {
         QPHashTable qpHashTable =new  QPHashTable(10000019, 1000000007);
         AQPHashTable aqpHashTable =new  AQPHashTable(10000019, 1000000007);
         DoubleHashTable doubleHashTable =new  DoubleHashTable(10000019, 1000000007);
+
+
+        LPHashTable lpHashTable2 =new  LPHashTable(10000019, 1000000007);
+        QPHashTable qpHashTable2 =new  QPHashTable(10000019, 1000000007);
+        AQPHashTable aqpHashTable2 =new  AQPHashTable(10000019, 1000000007);
+        DoubleHashTable doubleHashTable2 =new  DoubleHashTable(10000019, 1000000007);
+        for (int j = 0; j < 5000009; j++) {
+            int b = random.nextInt(100);
+            int a = 100 * j + b;
+            lpHashTable2.Insert(new HashTableElement(a, 0));
+            qpHashTable2.Insert(new HashTableElement(a, 0));
+            aqpHashTable2.Insert(new HashTableElement(a, 0));
+            doubleHashTable2.Insert(new HashTableElement(a, 0));
+            }//not merged
         long time1 = System.nanoTime();
         for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
