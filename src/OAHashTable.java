@@ -31,7 +31,11 @@ public abstract class OAHashTable implements IHashTable {
     public void Insert(HashTableElement hte) throws TableIsFullException, KeyAlreadyExistsException {
         for (int i = 0; i < table.length; i++) {
             int hashed = Hash(hte.GetKey(), i);
-            if (table[hashed] == null || table[hashed] == hteDeleted) {
+            if(hashed<0)
+            {
+                System.out.println("lalala");
+            }
+            else if (table[hashed] == null || table[hashed] == hteDeleted) {
                 table[hashed] = hte;
                 return;
             } else if (table[hashed].GetKey() == hte.GetKey()) {

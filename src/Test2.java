@@ -3,7 +3,7 @@ import java.util.Random;
 public class Test2 {
     public static void main(String[] args) throws IHashTable.TableIsFullException, IHashTable.KeyAlreadyExistsException {
         Random random = new Random();
-        //not meagered
+      /*  //not meagered
         LPHashTable lpHashTable2 = new LPHashTable(10000019, 1000000007);
         QPHashTable qpHashTable2 = new QPHashTable(10000019, 1000000007);
         AQPHashTable aqpHashTable2 = new AQPHashTable(10000019, 1000000007);
@@ -12,17 +12,16 @@ public class Test2 {
             long b = random.nextInt(100);
             long a = 100 * j + b;
             lpHashTable2.Insert(new HashTableElement(a, 0));
-
-        }//not merged
+        }//not merged*/
         double totalTotalTime=0;
         for (int time = 0; time < 30; time++) {
-            QPHashTable qpHashTable = new QPHashTable(10000019, 1000000007);
+            AQPHashTable aqpHashTable = new AQPHashTable(10000019, 1000000007);
             double totalTime = 0;
-            for (int j = 0; j < 10000019; j++) {
+            for (int j = 0; j < 9500018; j++) {
                 long b = random.nextInt(100);
                 long a = 100 * j + b;
                 long time1 = System.currentTimeMillis();
-                qpHashTable.Insert(new HashTableElement(a, 0));
+                aqpHashTable.Insert(new HashTableElement(a, 0));
                 long time2 = System.currentTimeMillis();
                 totalTime += (time2 - time1)/ 1000D;
             }

@@ -9,10 +9,11 @@ public class AQPHashTable extends OAHashTable {
 	}
 	@Override
 	public int Hash(long x, int i) {
-		int res=(modHash.Hash(x)+(parityCheck(i)*i*i));
-		return (m+(res%m))%m;
+		long j = i;
+		long res=(modHash.Hash(x)+(parityCheck(j)*j*j))%m;
+		return (int)res;
 	}
-	private int parityCheck(int i) {
+	private int parityCheck(long i) {
 		if (i % 2 == 0) return 1;
 		return -1;
 	}

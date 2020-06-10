@@ -20,6 +20,8 @@ public class ModHash {
 	}
 	
 	public int Hash(long key) {
-		return (int) (((a*key+b)%p)%m);
+		long temp =((a*key+b)%p);
+		temp=temp%m;
+		return (int)temp;
 	}
 }
