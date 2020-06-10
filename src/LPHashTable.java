@@ -6,7 +6,6 @@ public class LPHashTable extends OAHashTable {
 		super(m);
 		modHash = ModHash.GetFunc(m,p);
 
-		// TODO Complete hash table constructor.
 	}
 	
 	@Override
