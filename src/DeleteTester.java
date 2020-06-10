@@ -23,18 +23,21 @@ public class DeleteTester {
                 int a = 100 * (j++) + b;
                 lst.add(new HashTableElement(a,0));
               */
-            long time1 = System.nanoTime();
+            long totalTime = 0;
             for (HashTableElement elm : lst) {
+                long time1 = System.nanoTime();
                 doubleHashTable.Insert(elm);
+                long time2 = System.nanoTime();
+                totalTime += time2 - time1;
             }
 
             for (HashTableElement elm : lst) {
+                long time1 = System.nanoTime();
                 doubleHashTable.Delete(elm.GetKey());
+                long time2 = System.nanoTime();
+                totalTime += time2 - time1;
             }
-            long time2 = System.nanoTime();
-            System.out.println("Iteration " + i + ": " + (time2 - time1));
-
-
+            System.out.println("Iteration " + i + ": " + totalTime);
         }
     }
 }

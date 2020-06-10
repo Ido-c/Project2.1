@@ -4,7 +4,6 @@ import java.util.Random;
 public class Tester {
     public static void main(String[] args) throws IHashTable.TableIsFullException, IHashTable.KeyAlreadyExistsException {
         Random random = new Random();
-        long time0 = System.nanoTime();
         LPHashTable lpHashTable =new  LPHashTable(10000019, 1000000007);
         QPHashTable qpHashTable =new  QPHashTable(10000019, 1000000007);
         AQPHashTable aqpHashTable =new  AQPHashTable(10000019, 1000000007);
@@ -23,36 +22,46 @@ public class Tester {
             aqpHashTable2.Insert(new HashTableElement(a, 0));
             doubleHashTable2.Insert(new HashTableElement(a, 0));
             }//not merged
-        long time1 = System.nanoTime();
+        double totalTime = 0;
         for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
+            long time1 = System.nanoTime();
             lpHashTable.Insert(new HashTableElement(a, 0));
+            long time2 = System.nanoTime();
+            totalTime += time2 - time1;
         }
-        /*long time2 = System.nanoTime();
-        for (int j = 0; j < 5000009; j++) {
+        System.out.println("LP time: " + totalTime/1000000000);
+/*        totalTime = 0;
+        for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
+            long time1 = System.nanoTime();
             qpHashTable.Insert(new HashTableElement(a, 0));
-        }*/
-        long time3 = System.nanoTime();
+            long time2 = System.nanoTime();
+            totalTime += time2 - time1;
+        }
+        System.out.println("QP time: " + totalTime/1000000000);*/
+        totalTime = 0;
         for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
+            long time1 = System.nanoTime();
             aqpHashTable.Insert(new HashTableElement(a, 0));
+            long time2 = System.nanoTime();
+            totalTime += time2 - time1;
         }
-        long time4 = System.nanoTime();
+        System.out.println("AQP time: " + totalTime/1000000000);
+        totalTime = 0;
         for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
+            long time1 = System.nanoTime();
             doubleHashTable.Insert(new HashTableElement(a, 0));
+            long time2 = System.nanoTime();
+            totalTime += time2 - time1;
         }
-        long time5 = System.nanoTime();
-        System.out.println("Initialize: " + (time1 - time0));
-        System.out.println("LP time: " + (time3 - time1));
-//        System.out.println("QP time: " + (time3 - time2));
-        System.out.println("AQP time: " + (time4 - time3));
-        System.out.println("Double time: " + (time5 - time4));
+        System.out.println("Double time: " + totalTime/1000000000);
     }
 }
 
