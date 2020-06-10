@@ -1,4 +1,3 @@
-import java.util.HashSet;
 import java.util.Random;
 
 public class Tester {
@@ -9,7 +8,7 @@ public class Tester {
         AQPHashTable aqpHashTable =new  AQPHashTable(10000019, 1000000007);
         DoubleHashTable doubleHashTable =new  DoubleHashTable(10000019, 1000000007);
 
-        //not meagered
+    /*    //not meagered
         LPHashTable lpHashTable2 =new  LPHashTable(10000019, 1000000007);
         QPHashTable qpHashTable2 =new  QPHashTable(10000019, 1000000007);
         AQPHashTable aqpHashTable2 =new  AQPHashTable(10000019, 1000000007);
@@ -21,8 +20,7 @@ public class Tester {
             qpHashTable2.Insert(new HashTableElement(a, 0));
             aqpHashTable2.Insert(new HashTableElement(a, 0));
             doubleHashTable2.Insert(new HashTableElement(a, 0));
-            }//not merged
-
+            }//not merged*/
         double totalTime = 0;
         for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
@@ -32,8 +30,8 @@ public class Tester {
             long time2 = System.currentTimeMillis();
             totalTime += time2 - time1;
         }
-        System.out.println("LP time: " + totalTime/1000);
-/*        totalTime = 0;
+        System.out.println("LP time: " + totalTime/1000000000);
+        totalTime = 0;
         for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
             int a = 100 * j + b;
@@ -42,7 +40,7 @@ public class Tester {
             long time2 = System.nanoTime();
             totalTime += time2 - time1;
         }
-        System.out.println("QP time: " + totalTime/1000000000);*/
+        System.out.println("QP time: " + totalTime/1000000000);
         totalTime = 0;
         for (int j = 0; j < 9500018; j++) {
             int b = random.nextInt(100);
