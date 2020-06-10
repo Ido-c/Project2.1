@@ -4,12 +4,12 @@ public class DoubleHashTable extends OAHashTable {
 	public DoubleHashTable(int m, long p) {
 		super(m);
 		modHash1 = ModHash.GetFunc(m,p);
-		modHash2 = ModHash.GetFunc(m,p);
+		modHash2 = ModHash.GetFunc(m-1,p);
 	}
 	
 	@Override
 	public int Hash(long x, int i) {
-		return (modHash1.Hash(x)+i*modHash2.Hash(x))%m;
+		return (modHash1.Hash(x)+i*(modHash2.Hash(x)+1))%m;
 	}
 	
 }
