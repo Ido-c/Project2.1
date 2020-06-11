@@ -1,5 +1,6 @@
-import java.util.Random;
-
+/**
+ * HashTable using open addressing with alternating quadratic probing
+ */
 public class AQPHashTable extends OAHashTable {
 	private final ModHash modHash;
 
@@ -7,6 +8,14 @@ public class AQPHashTable extends OAHashTable {
 		super(m);
 		modHash = ModHash.GetFunc(m,p);
 	}
+
+	/**
+	 *
+	 * @param x - the key to hash
+	 * @param i - the index in the probing sequence
+	 * @return product of Hash function (h(x)+((-1)^i)*i^2)%m
+	 * h is a function from a universal family
+	 */
 	@Override
 	public int Hash(long x, int i) {
 		long j = i;
