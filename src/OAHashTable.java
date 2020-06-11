@@ -11,7 +11,11 @@ public abstract class OAHashTable implements IHashTable {
         this.m = m;
     }
 
-
+    /**
+     *
+     * @param key - the key to find in the table
+     * @return the HashTableElement with the desired key if exists in table. else returns null
+     */
     @Override
     public HashTableElement Find(long key) {
         for (int i = 0; i < table.length; i++) {
@@ -27,15 +31,17 @@ public abstract class OAHashTable implements IHashTable {
         return null;
     }
 
+    /**
+     *
+     * @param hte - the HashTableElement to be added to the table
+     * @throws TableIsFullException - if  probing sequence ended without finding a vacant index
+     * @throws KeyAlreadyExistsException - if found HashTableElement with same key
+     */
     @Override
     public void Insert(HashTableElement hte) throws TableIsFullException, KeyAlreadyExistsException {
         for (int i = 0; i < table.length; i++) {
             int hashed = Hash(hte.GetKey(), i);
-            if(hashed<0)
-            {
-                System.out.println("lalala");
-            }
-            else if (table[hashed] == null || table[hashed] == hteDeleted) {
+            if (table[hashed] == null || table[hashed] == hteDeleted) {
                 table[hashed] = hte;
                 return;
             } else if (table[hashed].GetKey() == hte.GetKey()) {
@@ -45,6 +51,12 @@ public abstract class OAHashTable implements IHashTable {
         throw new TableIsFullException(hte);
     }
 
+
+    /**
+     *
+     * @param key - the key of the HashTableElement to be deleted from the table
+     * @throws KeyDoesntExistException - if couldn't find HashTableElement with desired key
+     */
     @Override
     public void Delete(long key) throws KeyDoesntExistException {
         for (int i = 0; i < table.length; i++) {
