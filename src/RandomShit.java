@@ -8,19 +8,18 @@ import java.util.stream.Stream;
 public class RandomShit {
     public static void main(String[] args) {
         DoubleHashTable hashTable =new  DoubleHashTable(6571, 1000000007);
-        List<Integer> list = Stream.generate(new MySupp(Integer.parseInt(args[0]))).limit(7000).collect(Collectors.toList());
-        Set<Integer> set =Stream.generate(new MySupp(Integer.parseInt(args[0]))).limit(7000).collect(Collectors.toSet());
+        List<Integer> list = Stream.generate(new MySupp(Integer.parseInt(args[0]))).limit(6571).collect(Collectors.toList());
+        Set<Integer> set =Stream.generate(new MySupp(Integer.parseInt(args[0]))).limit(6571).collect(Collectors.toSet());
         System.out.println(list.size()+" l vs s "+set.size());
         System.out.println(set.getClass().getCanonicalName());
-        /*
-        int SumErr1=0;
+        /*int SumErr1=0;
         int SumErr2=0;
         for (int i = 0; i <100 ; i++) {
             int err1=0;
             int err2=0;
 
             Random random = new Random();
-            AQPHashTable hashTable =new  AQPHashTable(6571, 1000000007);
+            QPHashTable hashTable =new  QPHashTable(6571, 1000000007);
             for (int j = 0; j <6571 ; j++) {
                 int b= random.nextInt(100);
                 int a = 100*j+b;
@@ -37,8 +36,7 @@ public class RandomShit {
             System.out.println("TableIsFullException "+err1+" KeyAlreadyExistsException "+err2);
         }
         System.out.println("overoll TableIsFullException "+SumErr1+" oveall KeyAlreadyExistsException "+SumErr2);
-
-         */
+*/
 
 
     }
@@ -46,7 +44,7 @@ public class RandomShit {
    public static class MySupp implements Supplier<Integer> {
         private int i;
         private int k;
-        private DoubleHashTable hashTable = new DoubleHashTable(6571, 1000000007);
+        private QPHashTable hashTable =new  QPHashTable(6571, 1000000007);
 
         public MySupp(int k) {
             this.k = k;

@@ -10,7 +10,7 @@ public class DeleteTester {
     public static void main(String[] args) throws IHashTable.TableIsFullException, IHashTable.KeyAlreadyExistsException, IHashTable.KeyDoesntExistException {
 
         Random random = new Random();
-        DoubleHashTable doubleHashTable = new DoubleHashTable(10000019, 1000000007);
+        LPHashTable HashTable = new LPHashTable(10000019, 1000000007);
         for (int i = 1; i < 7; i++) {
 
             List<HashTableElement> lst = Stream.generate(new MySupp2()).limit(5000009)
@@ -23,21 +23,21 @@ public class DeleteTester {
                 int a = 100 * (j++) + b;
                 lst.add(new HashTableElement(a,0));
               */
-            long totalTime = 0;
+            double totalTime = 0;
             for (HashTableElement elm : lst) {
-                long time1 = System.nanoTime();
-                doubleHashTable.Insert(elm);
-                long time2 = System.nanoTime();
-                totalTime += time2 - time1;
+                long time1 = System.currentTimeMillis();
+                HashTable.Insert(elm);
+                long time2 = System.currentTimeMillis();
+                totalTime += (time2 - time1)/1000D;
             }
 
             for (HashTableElement elm : lst) {
-                long time1 = System.nanoTime();
-                doubleHashTable.Delete(elm.GetKey());
-                long time2 = System.nanoTime();
-                totalTime += time2 - time1;
+                long time1 = System.currentTimeMillis();
+                HashTable.Delete(elm.GetKey());
+                long time2 = System.currentTimeMillis();
+                totalTime += (time2 - time1)/1000D;
             }
-            System.out.println("Iteration " + i + ": " + totalTime/1000000000);
+            System.out.println("Iteration " + i + ": " + totalTime);
         }
     }
 }
