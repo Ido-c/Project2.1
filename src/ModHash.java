@@ -13,12 +13,24 @@ public class ModHash {
 		this.p=p;
 	}
 
+	/**
+	 *
+	 * @param m - size of Table
+	 * @param p - Prime number larger than m
+	 * @return a ModHash object with parameters for building a Hash function from a universal family
+	 */
 	public static ModHash GetFunc(int m, long p){
 		long a = ThreadLocalRandom.current().nextLong(1,p);
 		long b = ThreadLocalRandom.current().nextLong(0,p);
 		return new ModHash(a,b,m,p);
 	}
-	
+
+	/**
+	 *
+	 * applies Hash function from a universal family on given key
+	 * @param key - key of HashTableElement to be Hashed
+	 * @return the product of applying the Hash function on key.
+	 */
 	public int Hash(long key) {
 		long temp =((a*key+b)%p);
 		temp=temp%m;
