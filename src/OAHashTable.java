@@ -12,7 +12,6 @@ public abstract class OAHashTable implements IHashTable {
     }
 
     /**
-     *
      * @param key - the key to find in the table
      * @return the HashTableElement with the desired key if exists in table. else returns null
      */
@@ -32,20 +31,21 @@ public abstract class OAHashTable implements IHashTable {
     }
 
     /**
-     *
      * @param hte - the HashTableElement to be added to the table
-     * @throws TableIsFullException - if  probing sequence ended without finding a vacant index
+     * @throws TableIsFullException      - if  probing sequence ended without finding a vacant index
      * @throws KeyAlreadyExistsException - if found HashTableElement with same key
      */
     @Override
     public void Insert(HashTableElement hte) throws TableIsFullException, KeyAlreadyExistsException {
-        for (int i = 0; i < table.length; i++) {
-            int hashed = Hash(hte.GetKey(), i);
-            if (table[hashed] == null || table[hashed] == hteDeleted) {
-                table[hashed] = hte;
-                return;
-            } else if (table[hashed].GetKey() == hte.GetKey()) {
-                throw new KeyAlreadyExistsException(hte);
+        if (Find(hte.GetKey()) != null) {
+            throw new KeyAlreadyExistsException(hte);
+        } else {
+            for (int i = 0; i < table.length; i++) {
+                int hashed = Hash(hte.GetKey(), i);
+                if (table[hashed] == null || table[hashed] == hteDeleted) {
+                    table[hashed] = hte;
+                    return;
+                }
             }
         }
         throw new TableIsFullException(hte);
@@ -53,7 +53,6 @@ public abstract class OAHashTable implements IHashTable {
 
 
     /**
-     *
      * @param key - the key of the HashTableElement to be deleted from the table
      * @throws KeyDoesntExistException - if couldn't find HashTableElement with desired key
      */
