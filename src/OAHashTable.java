@@ -1,3 +1,9 @@
+/*
+ work by:
+ Jacob Gidron 315964536 jacobgidron
+ Ido Cohen 305199416 idoc
+ */
+
 import com.sun.org.apache.xpath.internal.operations.Mod;
 
 public abstract class OAHashTable implements IHashTable {

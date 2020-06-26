@@ -1,3 +1,8 @@
+/*
+ work by:
+ Jacob Gidron 315964536 jacobgidron
+ Ido Cohen 305199416 idoc
+ */
 
 public class HashTableElement{
 	private long key;
