@@ -1,3 +1,9 @@
+/*
+ work by:
+ Jacob Gidron 315964536 jacobgidron
+ Ido Cohen 305199416 idoc
+ */
+
 /**
  * HashTable using open addressing with quadratic probing
  */
